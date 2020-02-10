@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    {% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="templates">Templates</a>
+                </li>
+                <li class="nav-item">
+                    {# <a class="nav-link" href="templates/active">Active</a> #}
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% endblock %}
+
+    {% for template in templates %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ template.name }} {{ template.active ? '🟢' : '🔴' }}</h5>
+                <p class="card-text">{{ template.description }}</p>
+                <a href="#" class="btn  {{ template.prenium ? 'btn-warning' : 'btn-primary' }}">Visit this {{ template.prenium ? 'prenium' : '' }} template</a>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
